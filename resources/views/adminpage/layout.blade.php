@@ -148,12 +148,6 @@
                     </a>
                 </li>
                 <li class="menu-item active">
-                    <a href="{{route('users')}}" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                        <div data-i18n="Analytics">Kullanıcılar</div>
-                    </a>
-                </li>
-                <li class="menu-item active">
                     <a href="{{route('categorie')}}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Kategori İşlemleri</div>

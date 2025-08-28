@@ -16,10 +16,6 @@ class AdminController extends Controller
         return view('adminpage.layout');
     }
 
-    public function users()
-    {
-        return view('adminpage.users');
-    }
     public function categories()
     {
         $categories = category::all();

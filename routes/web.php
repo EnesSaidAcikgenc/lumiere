@@ -40,7 +40,6 @@ Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 //----------------------------------ADMİN SAYFASI ROUTELARI BAŞLANGIÇ-------------------------------------------
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin',[AdminController::class,'index'])->name('admin');
-    Route::get('/kullanıcılar',[AdminController::class,'users'])->name('users');
     Route::get('/kategoriler',[AdminController::class,'categories'])->name('categorie');
     Route::get('/kategoriEkleme',[AdminController::class,'add_categories'])->name('add_categories');
     Route::post('/kategoriEkle',[AdminController::class,'category_add'])->name('category_add');
