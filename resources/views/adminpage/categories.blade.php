@@ -7,7 +7,14 @@
 
     <div class="container">
         <h2 class="mb-4" style="text-align: center">Kategori Listesi</h2>
-
+        <div class="container">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    {{session('success')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+        </div>
         <table class="table table-hover table-bordered shadow-sm rounded">
             <thead class="table-dark">
             <tr>

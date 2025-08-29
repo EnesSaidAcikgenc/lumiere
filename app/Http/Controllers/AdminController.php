@@ -38,6 +38,15 @@ class AdminController extends Controller
 
     public function category_add(Request $request)
     {
+        $request->validate([
+            'category_name' => 'required',
+            'image' => 'required',
+            ],[
+                'category_name.required' => 'Kategorinin isim alanı boş olamaz.',
+                'image.required' => 'Kategorinize bir resim seçmek zorundasınız.'
+        ]);
+
+
         $category = new Category();
         $category -> category_name = $request->input('category_name');
         if($request->hasfile('image')){
@@ -50,7 +59,7 @@ class AdminController extends Controller
         }
         $category->save();
 
-        return redirect()->route('categorie');
+        return redirect()->route('categorie')->with('success','Kategori oluşturuldu.');
     }
 
     public function edit_categories($id,Request $request)
