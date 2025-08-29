@@ -49,13 +49,11 @@ class AdminController extends Controller
 
         $category = new Category();
         $category -> category_name = $request->input('category_name');
-        if($request->hasfile('image')){
+        if($request->hasFile('image')){
             $path = public_path('images');
-            $name=\Illuminate\Support\Str::random(20);
-            $file=$request->file('image');
-            $name .= $name.$file->getClientOriginalExtension();
-            $file->move($path,$name);
-            $category->image = $name;
+            $filename = \Illuminate\Support\Str::random(20).'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move($path, $filename);
+            $category->image = $filename;
         }
         $category->save();
 
@@ -72,13 +70,11 @@ class AdminController extends Controller
     {
         $category = category::find($request->id);
         $category -> category_name = $request->input('category_name');
-        if($request->hasfile('image')){
+        if($request->hasFile('image')){
             $path = public_path('images');
-            $name=\Illuminate\Support\Str::random(20);
-            $file=$request->file('image');
-            $name .= $name.$file->getClientOriginalExtension();
-            $file->move($path,$name);
-            $category->image = $name;
+            $filename = \Illuminate\Support\Str::random(20).'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move($path, $filename);
+            $category->image = $filename;
         }
         $category->save();
 
@@ -102,6 +98,18 @@ class AdminController extends Controller
 
     public function product_add(Request $request)
     {
+        $request->validate([
+            'category_id' => 'required',
+            'product_name' => 'required',
+            'image' => 'required',
+            'price' => 'required',
+            ],[
+                'category_id.required' => 'Oluşturduğunuz ürünü bir kategoriye eklemek zorundasınız.',
+                'product_name.required' => 'Ürününüzün adını girmek zorundasınız.',
+                'image.required' => 'Ürününüze bir resim seçmek zorundasınız.',
+                'price.required' => 'Ürününüzün fiyatını belirlemek zorundasınız.'
+        ]);
+
         $products = new Product();
         $products -> category_id = $request->input('category_id');
         $products -> product_name = $request->input('product_name');
@@ -116,7 +124,7 @@ class AdminController extends Controller
         }
         $products->save();
 
-        return redirect()->route('products');
+        return redirect()->route('products')->with('success','Ürün başarıyla eklendi.');
     }
 
     public function edit_product($id,Request $request)
