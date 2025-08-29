@@ -10,7 +10,18 @@
 </head>
 <body>
 <h1 style="text-align: center">Giriş Yapınız</h1>
-
+<div class="container">
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </ul>
+        </div>
+    @endif
+</div>
 <form action="{{route('loginp')}}" method="post">
     @csrf
 <div class="container mt-5" style="
