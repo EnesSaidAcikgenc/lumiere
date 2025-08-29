@@ -24,8 +24,9 @@ class AdminController extends Controller
     public function products()
     {
 //        $category_name = category::all(); -> Bu sorunu en erkenden çözmeye çalış
+        $categories = Category::pluck('category_name', 'id');
         $products = Product::all();
-        return view('adminpage.product', compact('products'));
+        return view('adminpage.product', compact('products','categories'));
     }
 
     /**
