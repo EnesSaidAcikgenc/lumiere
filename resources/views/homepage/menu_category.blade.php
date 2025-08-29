@@ -1,6 +1,14 @@
 @extends('homepage.menu')
 @section('header')
+
     <h2 style="font-weight: bold">Kategoriler</h2>
+
+    @if( \Illuminate\Support\Facades\Auth::user() && Auth::user()->is_admin == 1)
+    <span>
+        <a href="{{route('admin')}}" class="btn btn-primary">Admin Panele git</a>
+    </span>
+    @endif
+
 @endsection
 @section('content')
     @foreach($categories as $categorie)

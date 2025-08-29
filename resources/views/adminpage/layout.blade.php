@@ -182,7 +182,7 @@
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <!-- Search -->
                     <div class="navbar-nav align-items-center">
-
+                        <a href="{{route('home')}}" class="btn btn-primary">Menüye Git</a>
                     </div>
                     <!-- /Search -->
 

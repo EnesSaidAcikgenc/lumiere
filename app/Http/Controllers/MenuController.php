@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
@@ -12,14 +13,16 @@ class MenuController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $categories = Category::all();
-        return view('homepage.menu_category', compact('categories'));
+        return view('homepage.menu_category', compact('categories','user'));
     }
 
     public function menu($id)
     {
+        $user = Auth::user();
         $category = Category::with('products')->findOrFail($id);
-        return view('homepage.menu_product', compact('category'));
+        return view('homepage.menu_product', compact('category','user'));
     }
 
     /**
