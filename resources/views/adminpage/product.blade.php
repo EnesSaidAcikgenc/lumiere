@@ -15,6 +15,11 @@
                     </div>
                 @endif
             </div>
+
+            <div class="mb-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Ürün ara...">
+            </div>
+
             <table class="table table-hover table-bordered shadow-sm rounded">
                 <thead class="table-dark">
                 <tr>
@@ -25,7 +30,7 @@
                     <th>İşlemler</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="productTable">
                 @foreach($products as $product)
                     <tr>
                         <td>{{$product->id}}</td>
@@ -51,4 +56,20 @@
 
 
         </div>
+
+        <script>
+            document.getElementById("searchInput").addEventListener("keyup", function () {
+                let filter = this.value.toLowerCase();
+                let rows = document.querySelectorAll("#productTable tr");
+
+                rows.forEach(row => {
+                    let categoryName = row.cells[1].textContent.toLowerCase();
+                    if (categoryName.includes(filter)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+        </script>
 @endsection

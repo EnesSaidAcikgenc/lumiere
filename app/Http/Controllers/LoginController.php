@@ -27,6 +27,10 @@ class LoginController extends Controller
         $request->validate([
             'email'    => 'required|email',
             'password' => 'required'
+            ],[
+                'email.required' => 'yanlış veya eksik e-mail girdiniz.',
+                'email.email' => '@ işaretini koymayı unutmayın lütfen.',
+                'password.required' => 'yanlış veya eksik şifre girdiniz lütfen tekrar deneyiniz.'
         ]);
 
         // Auth::attempt giriş denemesi yapar
