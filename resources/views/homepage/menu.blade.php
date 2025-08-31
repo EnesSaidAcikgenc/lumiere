@@ -13,7 +13,7 @@
 <header class="relative w-full h-48">
     <img src="https://picsum.photos/1200/400?food" class="w-full h-48 object-cover" alt="banner">
     <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center">
-        <img src="https://dummyimage.com/120x120/000/fff&text=Logo" alt="Logo" class="rounded-full border-4 border-white shadow-lg">
+        <img src="{{asset('logo/lumiereLogo.jpeg')}}" alt="Logo" class="rounded-full border-4 border-white shadow-lg" width="150" height="auto">
         <h1 class="text-2xl font-bold mt-2">Lumiere Menü</h1>
 {{--        <p class="text-gray-300 text-sm">Adres · Telefon · Instagram</p>--}}
     </div>
