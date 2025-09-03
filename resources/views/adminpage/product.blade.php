@@ -64,7 +64,8 @@
 
                 rows.forEach(row => {
                     let categoryName = row.cells[1].textContent.toLowerCase();
-                    if (categoryName.includes(filter)) {
+                    let productName = row.cells[2].textContent.toLowerCase();
+                    if (categoryName.includes(filter)|| productName.includes(filter)) {
                         row.style.display = "";
                     } else {
                         row.style.display = "none";
