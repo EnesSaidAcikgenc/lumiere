@@ -140,27 +140,24 @@
             <div class="menu-inner-shadow"></div>
 
             <ul class="menu-inner py-1">
-                <!-- İşlemler -->
-                <li class="menu-item active">
+                <li class="menu-item {{ request()->routeIs('admin') ? 'active' : '' }}">
                     <a href="{{route('admin')}}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Admin Anasayfası</div>
                     </a>
                 </li>
-                <li class="menu-item active">
+                <li class="menu-item {{ request()->routeIs('categorie') ? 'active' : '' }}">
                     <a href="{{route('categorie')}}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Kategori İşlemleri</div>
                     </a>
                 </li>
-                <li class="menu-item active">
+                <li class="menu-item {{ request()->routeIs('products') ? 'active' : '' }}">
                     <a href="{{route('products')}}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Ürün İşlemleri</div>
                     </a>
                 </li>
-
-
             </ul>
         </aside>
         <!-- / Menu -->
